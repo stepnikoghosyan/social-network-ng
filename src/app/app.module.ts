@@ -9,10 +9,16 @@ import {AppComponent} from './app.component';
 // guards
 import {AuthGuard} from './shared/guards/auth.guard';
 import {SigninGuard} from './shared/guards/signin.guard';
+import { LayoutComponent } from './layout/layout.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { TopNavBarComponent } from './shared/components/top-nav-bar/top-nav-bar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent,
+    NotFoundComponent,
+    TopNavBarComponent
   ],
   imports: [
     FormsModule,
