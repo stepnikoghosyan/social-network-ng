@@ -19,6 +19,11 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'auth',
+    canActivate: [SigninGuard],
+    loadChildren: './modules/auth/auth.module#AuthModule',
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   }

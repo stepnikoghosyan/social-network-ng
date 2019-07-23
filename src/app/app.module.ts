@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {CoreModule} from './core/core.module';
 
@@ -18,11 +17,10 @@ import { TopNavBarComponent } from './shared/components/top-nav-bar/top-nav-bar.
     AppComponent,
     LayoutComponent,
     NotFoundComponent,
-    TopNavBarComponent
+    TopNavBarComponent,
   ],
   imports: [
     FormsModule,
-    HttpClientModule,
     CoreModule.forRoot(),
     AppRoutingModule,
     // SharedModule,

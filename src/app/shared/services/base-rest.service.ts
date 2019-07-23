@@ -20,8 +20,8 @@ export abstract class BaseRestService<T> {
     return this.httpClient.post<Resp>(`${this.apiUrl + endpoint}/`, item);
   }
 
-  protected getByPagination(endpoint: string, params?: HttpParams): Observable<ResponseModel<T>> {
-    return this.httpClient.get<ResponseModel<T>>(`${this.apiUrl}${endpoint}/`, {
+  protected getByPagination(endpoint: string, params?: HttpParams): Observable<ResponseModel<T[]>> {
+    return this.httpClient.get<ResponseModel<T[]>>(`${this.apiUrl}${endpoint}/`, {
       params
     });
   }
