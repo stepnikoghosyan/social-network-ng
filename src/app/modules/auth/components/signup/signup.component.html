@@ -1,0 +1,15 @@
+<div class="page-container">
+  <div class="login-page justify-content-center">
+    <h2 style="text-align: center; color: #fff; font-size: 26px; font-weight: bolder;">ACCOUNT LOGIN</h2>
+    <div class="form">
+      <form class="login-form" [formGroup]="form">
+        <input formControlName="username" type="text" placeholder="Username"/>
+        <input formControlName="firstName" type="text" placeholder="First Name"/>
+        <input formControlName="lastName" type="text" placeholder="Last Name"/>
+        <input formControlName="password" type="password" placeholder="Password"/>
+        <button (click)="onSubmit()">register</button>
+        <p class="message">Already have an account? <a routerLink="/auth/signin">Sign In</a></p>
+      </form>
+    </div>
+  </div>
+</div>

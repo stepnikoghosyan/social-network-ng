@@ -1,0 +1,20 @@
+<div class="page-container">
+  <div class="login-page justify-content-center">
+    <h2 style="text-align: center; color: #fff; font-size: 26px; font-weight: bolder;">ACCOUNT LOGIN</h2>
+    <div class="form">
+      <form class="login-form" [formGroup]="form">
+        <input formControlName="username" type="text" placeholder="Username"/>
+        <input formControlName="password" type="password" placeholder="Password"/>
+        <p class="text-danger">{{responseErrorMessage}}</p>
+        <button (click)="onSubmit()">login</button>
+        <p class="message">Not registered? <a routerLink="/auth/signup">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--<script>-->
+<!--  $('.message a').click(function(){-->
+<!--    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");-->
+<!--  });-->
+<!--</script>-->

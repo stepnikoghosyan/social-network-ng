@@ -26,8 +26,8 @@ export abstract class BaseRestService<T> {
     });
   }
 
-  protected getById(endpoint: string, id: number, headers?: HttpHeaders): Observable<T> {
-    return this.httpClient.get<T>(`${this.apiUrl}${endpoint}/${id}/`, {
+  protected getById(endpoint: string, id: string, headers?: HttpHeaders): Observable<ResponseModel<T>> {
+    return this.httpClient.get<ResponseModel<T>>(`${this.apiUrl}${endpoint}/${id}/`, {
       headers
     });
   }
