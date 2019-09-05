@@ -10,11 +10,12 @@ import {ToastrService} from 'ngx-toastr';
 
 // models
 import {ResponseModel} from '../../../../shared/models/response.model';
-import {IAuthModel} from '../../models/auth.model';
-import {UserModel} from '../../models/user.model';
+import {IAuthPayloadModel} from '../../models/auth-payload.model';
+import {AuthResponseModel} from '../../models/auth-response.model';
 
 // utils
 import {appErrorHandler} from '../../../../shared/utils/helpers';
+import {AUTH_MESSAGES} from '../../../../shared/utils/validation-messages';
 
 @Component({
   selector: 'app-signup',
@@ -24,6 +25,7 @@ import {appErrorHandler} from '../../../../shared/utils/helpers';
 export class SignupComponent implements OnInit, OnDestroy {
 
   public form: FormGroup;
+  public validationMessages = AUTH_MESSAGES;
   private $subscription: Subscription;
 
   constructor(
@@ -46,7 +48,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   private generateForm(): void {
     this.form = this.formBuilder.group({
-      username: [null, [Validators.required]],
+      email: [null, [Validators.required]],
       password: [null, [Validators.required]],
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
@@ -61,15 +63,15 @@ export class SignupComponent implements OnInit, OnDestroy {
     }
   }
 
-  private signUp(values: IAuthModel): void {
+  private signUp(values: IAuthPayloadModel): void {
     console.log('TRY to register:', values);
 
     this.$subscription = this.authService.register(values)
       .subscribe(
-        (result: ResponseModel<UserModel>) => {
+        (result: ResponseModel<AuthResponseModel>) => {
           console.log('RESPONSE:', result);
-          this.authService.setAuthToken = (result.data as UserModel).authToken;
-          this.authService.setRefreshToken = (result.data as UserModel).refreshToken;
+          this.authService.setAuthToken = (result.data as AuthResponseModel).authToken;
+          this.authService.setRefreshToken = (result.data as AuthResponseModel).refreshToken;
           this.router.navigateByUrl('/');
         },
         (error: HttpErrorResponse) => {

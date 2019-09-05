@@ -8,8 +8,8 @@ import {tap} from 'rxjs/operators';
 import {BaseRestService} from '../../../shared/services/base-rest.service';
 
 // models
-import {UserModel} from '../models/user.model';
-import {IAuthModel} from '../models/auth.model';
+import {AuthResponseModel} from '../models/auth-response.model';
+import {IAuthPayloadModel} from '../models/auth-payload.model';
 import {ResponseModel} from '../../../shared/models/response.model';
 
 // utils
@@ -18,8 +18,8 @@ import {parseJwt} from '../../../shared/utils/helpers';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends BaseRestService<IAuthModel> {
-  public user: UserModel;
+export class AuthService extends BaseRestService<IAuthPayloadModel> {
+  public user: AuthResponseModel;
 
   constructor(
     private readonly http: HttpClient,
@@ -29,10 +29,10 @@ export class AuthService extends BaseRestService<IAuthModel> {
     super(http);
   }
 
-  public login(user: IAuthModel): Observable<ResponseModel<UserModel>> {
+  public login(user: IAuthPayloadModel): Observable<ResponseModel<AuthResponseModel>> {
     const httpClient = new HttpClient(this.handler);
-    return httpClient.post<ResponseModel<UserModel>>(`${this.apiUrl}auth/login`, user, {headers: null}).pipe(
-      tap((res: ResponseModel<UserModel>): void => {
+    return httpClient.post<ResponseModel<AuthResponseModel>>(`${this.apiUrl}auth/login`, user, {headers: null}).pipe(
+      tap((res: ResponseModel<AuthResponseModel>): void => {
         this.user = res.data;
         this.setAuthToken = res.data.authToken;
         this.setRefreshToken = res.data.refreshToken;
@@ -40,12 +40,12 @@ export class AuthService extends BaseRestService<IAuthModel> {
     );
   }
 
-  public register(data: IAuthModel): Observable<ResponseModel<UserModel>> {
+  public register(data: IAuthPayloadModel): Observable<ResponseModel<AuthResponseModel>> {
     console.log('REGISTER:', data);
-    return this.post<IAuthModel, ResponseModel<UserModel>>('auth/register', data);
+    return this.post<IAuthPayloadModel, ResponseModel<AuthResponseModel>>('auth/register', data);
   }
 
-  public getNewAccessToken(): Observable<Partial<UserModel>> {
+  public getNewAccessToken(): Observable<Partial<AuthResponseModel>> {
     return this.post('/users/refresh-api-token', {refresh: this.getRefreshToken});
   }
 

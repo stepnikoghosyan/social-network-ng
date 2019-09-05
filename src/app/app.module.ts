@@ -3,21 +3,25 @@ import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {CoreModule} from './core/core.module';
 
-import {AppComponent} from './app.component';
 
 // guards
 import {AuthGuard} from './shared/guards/auth.guard';
 import {SigninGuard} from './shared/guards/signin.guard';
-import { LayoutComponent } from './layout/layout.component';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { TopNavBarComponent } from './shared/components/top-nav-bar/top-nav-bar.component';
+
+// components
+import {AppComponent} from './app.component';
+import {LayoutComponent} from './layout/layout.component';
+import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+import { HomepageComponent } from './modules/homepage/homepage.component';
+import { BottomNavigationMenuComponent } from './shared/components/bottom-navigation-menu/bottom-navigation-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     NotFoundComponent,
-    TopNavBarComponent,
+    HomepageComponent,
+    BottomNavigationMenuComponent,
   ],
   imports: [
     FormsModule,

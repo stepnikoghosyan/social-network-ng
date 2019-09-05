@@ -3,7 +3,7 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {AuthService} from '../../modules/auth/services/auth.service';
 import {catchError, filter, finalize, switchMap, take} from 'rxjs/operators';
-import {UserModel} from '../../modules/auth/models/user.model';
+import {AuthResponseModel} from '../../modules/auth/models/auth-response.model';
 import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
@@ -64,7 +64,7 @@ export class TokenIntercepter implements HttpInterceptor {
       this.tokenSubject.next(null);
 
       return this.authService.getNewAccessToken().pipe(
-        switchMap((newTokens: Partial<UserModel>) => {
+        switchMap((newTokens: Partial<AuthResponseModel>) => {
           if (newTokens) {
             this.authService.setAuthToken = newTokens.authToken;
             this.authService.setRefreshToken = newTokens.refreshToken;

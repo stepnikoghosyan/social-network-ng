@@ -3,8 +3,18 @@
     <h2 style="text-align: center; color: #fff; font-size: 26px; font-weight: bolder;">ACCOUNT LOGIN</h2>
     <div class="form">
       <form class="login-form" [formGroup]="form">
-        <input formControlName="username" type="text" placeholder="Username"/>
-        <input formControlName="password" type="password" placeholder="Password"/>
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="text" placeholder="Username" autocomplete="false"/>
+        <ng-container *ngFor="let item of validationMessages.email">
+          <ng-container *ngIf="isFieldValid(form, 'email', undefined)">
+            <p *ngIf="form.get('email').hasError(item.type)" style="color: red">{{item.message}}</p>
+          </ng-container>
+        </ng-container>
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password" placeholder="Password" autocomplete="false"/>
+        <ng-container *ngFor="let item of validationMessages.password">
+          <p *ngIf="form.get('password').hasError(item.type)" style="color: red">{{item.message}}</p>
+        </ng-container>
         <p class="text-danger">{{responseErrorMessage}}</p>
         <button (click)="onSubmit()">login</button>
         <p class="message">Not registered? <a routerLink="/auth/signup">Create an account</a></p>

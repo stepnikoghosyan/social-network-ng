@@ -3,7 +3,7 @@
 .page-container {
   min-width: 100vw;
   min-height: 100vh;
-  background-image: url("~src/assets/images/signInBackground.jpg");
+  background-image: url("~src/assets/img/signInBackground.jpg");
   display: flex;
   padding: 15px;
   background-repeat: no-repeat;

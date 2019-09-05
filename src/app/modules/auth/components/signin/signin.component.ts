@@ -10,11 +10,13 @@ import {AuthService} from '../../services/auth.service';
 
 // models
 import {ResponseModel} from '../../../../shared/models/response.model';
-import {IAuthModel} from '../../models/auth.model';
-import {UserModel} from '../../models/user.model';
+import {IAuthPayloadModel} from '../../models/auth-payload.model';
+import {AuthResponseModel} from '../../models/auth-response.model';
 
 // utils
 import {FormValidation} from '../../../../shared/utils/forms';
+import {AUTH_MESSAGES} from '../../../../shared/utils/validation-messages';
+import {emailPattern} from '../../../../shared/validators/email.validator';
 
 @Component({
   selector: 'app-signin',
@@ -24,6 +26,7 @@ import {FormValidation} from '../../../../shared/utils/forms';
 export class SigninComponent extends FormValidation implements OnInit, OnDestroy {
 
   public form: FormGroup;
+  public validationMessages = AUTH_MESSAGES;
   private $subscription: Subscription;
 
   constructor(
@@ -47,8 +50,8 @@ export class SigninComponent extends FormValidation implements OnInit, OnDestroy
 
   private generateForm(): void {
     this.form = this.formBuilder.group({
-      username: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.pattern(emailPattern)]],
+      password: [null, [Validators.required]]
     });
   }
 
@@ -57,18 +60,21 @@ export class SigninComponent extends FormValidation implements OnInit, OnDestroy
       this.signIn(this.form.value);
     } else {
       this.toastr.error('Form Error.');
+      console.log(this.form.errors);
+      console.log(this.form.controls.email.errors);
+      console.log(this.form.controls.password.errors);
     }
   }
 
-  private signIn(credentials: IAuthModel): void {
+  private signIn(credentials: IAuthPayloadModel): void {
     this.$subscription = this.authService.login(credentials)
       .subscribe(
-        (result: ResponseModel<UserModel>) => this.successHandler(result),
+        (result: ResponseModel<AuthResponseModel>) => this.successHandler(result),
         (error: HttpErrorResponse) => this.formsResponseErrorHandler(error),
       );
   }
 
-  private successHandler(result: ResponseModel<UserModel>): void {
+  private successHandler(result: ResponseModel<AuthResponseModel>): void {
     console.log('Logged in.', result.data);
     this.authService.setAuthToken = result.data.authToken;
     this.authService.setRefreshToken = result.data.refreshToken;
