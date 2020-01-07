@@ -1,0 +1,135 @@
+/* HEADER */
+.homepage-header {
+  display: flex;
+  height: 40px;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.homepage-title {
+  width: 100%;
+  text-align: center;
+}
+
+.homepage-header-search-btn {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  align-self: flex-end;
+}
+
+.homepage-header-search-btn:hover {
+  cursor: pointer;
+}
+
+.homepage-header-search-btn:active .homepage-search-icon{
+  box-shadow: 0 0 5px 5px #777;
+}
+
+.homepage-search-icon {
+  display: block;
+  width: 100;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.homepage-search-input {
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid gray;
+  border-radius: 5px 5px 0 0;
+  outline: 0;
+  background: transparent;
+  padding: 0;
+  height: 35px;
+  font-size: 20px;
+}
+
+.homepage-cancel-btn {
+  color: #0184ff;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.homepage-cancel-btn:hover {
+  cursor: pointer;
+}
+
+
+/* TIMELINE */
+.timeline {
+  background-color: #f2f2f2;
+}
+
+
+/*CARD container*/
+.card-container {
+  margin: 10px 7px 0 7px;
+  padding: 7px;
+  background-color: #f2f2f2;
+  -webkit-box-shadow: 0 0 5px 0 #424242;
+  -moz-box-shadow: 0 0 5px 0 #424242;
+  box-shadow: 0 0 5px 0 #424242;
+}
+
+.card-header {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+}
+
+.round-image-container-btn {
+  float: left;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  box-sizing: border-box;
+  max-width: 50px;
+  max-height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0.5em;
+}
+
+.rounded-image-size {
+  width: 100%;
+  height: 100%;
+}
+
+.card-profile-name {
+  display: inline-block;
+  margin-left: 7px;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
+
+.card-content-text {
+  padding: 3px 0;
+}
+
+.card-content-text > pre {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.card-content-text > img {
+  width: 100%;
+}
+
+.card-post-date {
+  margin: 3px 0 0 10px;
+  font-size: 14px;
+}

@@ -12,15 +12,13 @@ import {SigninGuard} from './shared/guards/signin.guard';
 import {AppComponent} from './app.component';
 import {LayoutComponent} from './layout/layout.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
-import { HomepageComponent } from './modules/homepage/homepage.component';
-import { BottomNavigationMenuComponent } from './shared/components/bottom-navigation-menu/bottom-navigation-menu.component';
+import {BottomNavigationMenuComponent} from './shared/components/bottom-navigation-menu/bottom-navigation-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     NotFoundComponent,
-    HomepageComponent,
     BottomNavigationMenuComponent,
   ],
   imports: [

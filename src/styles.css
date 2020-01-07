@@ -1,9 +1,119 @@
-/* You can add global styles to this file, and also import other style files */
-body,html{
+html {
+  box-sizing: border-box;
   height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: cadetblue;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.horizontalLine {
+  height: 1px;
+  width: 100%;
+  background-color: gray;
+  box-shadow: 0 1px 5px 0 #424242;
+}
+
+.page-container {
+  background-color: #f2f2f2;
+  box-shadow: 0 0 5px 0 #424242;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+/* Header */
+.header {
+  /* background-color: tomato; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  padding: 3px 5px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.header-title {
   margin: 0;
   padding: 0;
-  background: #7F7FD5;
-  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+  font-size: 20px;
+}
+
+.header-search-input {
+  flex-grow: 1;
+  height: 100%;
+  max-width: 80%;
+  border: 0;
+  border-bottom: 1px solid gray;
+  outline: 0;
+  background: transparent;
+}
+
+.header-btn-with-image {
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.header-btn-with-image:active {
+  box-shadow: 0 0 5px 3px gray;
+}
+
+.header-search-input {
+  flex-grow: 1;
+  height: 100%;
+  max-width: 80%;
+  border: 0;
+  border-bottom: 1px solid gray;
+  outline: 0;
+  background: transparent;
+}
+
+.header-btn-with-text {
+  color: #0184ff;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 3px 10px 0 10px;
+}
+
+.vertically-scrollable {
+  overflow-y: scroll;
+}
+
+
+
+.icon-circle {
+  border-radius: 50%;
+  background: transparent;
 }
